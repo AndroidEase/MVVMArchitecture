@@ -98,4 +98,3 @@ dependencies {
     implementation ("com.google.android.material:material:1.11.0")
     implementation ("de.hdodenhof:circleimageview:3.1.0")
 }
-// user feature
