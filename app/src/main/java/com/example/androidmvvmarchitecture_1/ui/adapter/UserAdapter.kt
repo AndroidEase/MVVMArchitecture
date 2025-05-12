@@ -5,11 +5,11 @@ import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
 import com.example.androidmvvmarchitecture_1.data.model.User
 import com.example.androidmvvmrchitecture_1.databinding.ItemUserBinding
 
-class UserAdapter : PagingDataAdapter<User, UserAdapter.UserViewHolder>(UserDiffCallback) {
+class UserAdapter(private val onClick: (User) -> Unit) :
+    PagingDataAdapter<User, UserAdapter.UserViewHolder>(UserDiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UserViewHolder {
         val binding = ItemUserBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -20,21 +20,18 @@ class UserAdapter : PagingDataAdapter<User, UserAdapter.UserViewHolder>(UserDiff
         val user = getItem(position)
         user?.let {
             holder.bind(it)
+            holder.itemView.setOnClickListener { onClick(user) }
         }
     }
 
-    inner class UserViewHolder(private val binding: ItemUserBinding) :
-        RecyclerView.ViewHolder(binding.root) {
-
+    class UserViewHolder(private val binding: ItemUserBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(user: User) {
-            binding.userName.text = user.login
-            Glide.with(binding.userUrl.context)
-                .load(user.avatarUrl)
-                .into(binding.avatarImage)
+            binding.user = user
+            binding.executePendingBindings()
         }
     }
 
-    object UserDiffCallback : DiffUtil.ItemCallback<User>() {
+    class UserDiffCallback : DiffUtil.ItemCallback<User>() {
         override fun areItemsTheSame(oldItem: User, newItem: User) = oldItem.id == newItem.id
         override fun areContentsTheSame(oldItem: User, newItem: User) = oldItem == newItem
     }
