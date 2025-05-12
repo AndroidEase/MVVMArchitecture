@@ -4,7 +4,9 @@ plugins {
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
     alias(libs.plugins.hiltAndroid)
+    alias(libs.plugins.navigation.safe.args)
     kotlin("kapt")
+  //  id("androidx.navigation.safeargs.kotlin")
 }
 
 android {
@@ -97,4 +99,8 @@ dependencies {
 
     implementation ("com.google.android.material:material:1.11.0")
     implementation ("de.hdodenhof:circleimageview:3.1.0")
+
+    // Navigation component
+    implementation(libs.navigation.fragment.ktx)
+    implementation(libs.navigation.ui.ktx)
 }

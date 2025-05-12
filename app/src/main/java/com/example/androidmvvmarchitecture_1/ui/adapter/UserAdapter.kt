@@ -36,4 +36,3 @@ class UserAdapter(private val onClick: (User) -> Unit) :
         override fun areContentsTheSame(oldItem: User, newItem: User) = oldItem == newItem
     }
 }
-
