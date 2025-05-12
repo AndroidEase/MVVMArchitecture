@@ -19,6 +19,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:hint="Search GitHub users"
+            app:hintAnimationEnabled="true"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent">
@@ -29,7 +30,7 @@
                 android:layout_height="wrap_content"
                 android:imeOptions="actionSearch"
                 android:inputType="text"
-                android:padding="10dp"/>
+                android:paddingTop="30dp"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <!-- RecyclerView inside a Card for rounded look -->

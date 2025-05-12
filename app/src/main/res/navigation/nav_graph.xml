@@ -11,8 +11,7 @@
         android:label="User List">
         <action
             android:id="@+id/action_userListFragment_to_userDetailFragment"
-            app:destination="@id/userDetailFragment"
-             />
+            app:destination="@id/userDetailFragment"/>
 <!--        app:enterAnim="@anim/slide_in_right"-->
 <!--        app:exitAnim="@anim/slide_out_left"-->
     </fragment>
